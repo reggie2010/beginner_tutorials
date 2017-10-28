@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 		msg.data = ss.str();
 
 		chatter_pub.publish(msg);
-		ROS::INFO("%s", msg.data.c_str());
+		ROS_INFO("%s", msg.data.c_str());
 
 		ros::spinOnce();
 
