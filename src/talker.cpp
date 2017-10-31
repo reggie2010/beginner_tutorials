@@ -13,7 +13,7 @@
  * This tutorial demonstrates simple sending of messages over the ROS system.
  */
 int main(int argc, char **argv) {
-	/**
+    /**
      * The ros::init() function needs to see argc and argv so that it can perform
      * any ROS arguments and name remapping that were provided at the command line.
      * For programmatic remappings you can use a different version of init() which takes
@@ -50,13 +50,12 @@ int main(int argc, char **argv) {
      * buffer up before throwing some away.
      */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-
-	/**
+    /**
 	 * Frequency at which this node publishes messages
 	 */
   ros::Rate loop_rate(0.5);
 
-	/**
+    /**
      * A count of how many messages we have sent. This is used to create
      * a unique string for each message.
      */
@@ -65,13 +64,13 @@ int main(int argc, char **argv) {
     std::stringstream ss;
     ss << "[" << count << "]: " << "Learning ROS is fun!!";
 
-		/**
+        /**
          * This is a message object. You stuff it with data, and then publish it.
          */
     std_msgs::String msg;
     msg.data = ss.str();
 
-		/**
+        /**
          * The publish() function is how you send messages. The parameter
          * is the message object. The type of this object must agree with the type
          * given as a template parameter to the advertise<>() call, as was done
