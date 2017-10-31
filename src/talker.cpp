@@ -50,10 +50,10 @@ int main(int argc, char **argv) {
      * buffer up before throwing some away.
      */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
- 
-    /**
-	 * Frequency at which this node publishes messages
-	 */
+
+  /**
+   * Frequency at which this node publishes messages
+   */
   ros::Rate loop_rate(0.5);
 
     /**
