@@ -50,7 +50,11 @@ int main(int argc, char **argv) {
      * buffer up before throwing some away.
      */
 	ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-	ros::Rate loop_rate(10);
+	
+	/**
+	 * Frequency at which this node publishes messages
+	 */
+	ros::Rate loop_rate(0.5);
 
 	/**
      * A count of how many messages we have sent. This is used to create
@@ -59,7 +63,7 @@ int main(int argc, char **argv) {
 	int count = 0;
 	while(ros::ok()) {
 		std::stringstream ss;
-		ss << "hello world " << count;
+		ss << "[" << count << "]: " << "Learning ROS is fun!!";
 
 		/**
          * This is a message object. You stuff it with data, and then publish it.
@@ -77,6 +81,7 @@ int main(int argc, char **argv) {
 		ROS_INFO("%s", msg.data.c_str());
 
 		ros::spinOnce();
+		loop_rate.sleep();
 
 		++count;
 	}
