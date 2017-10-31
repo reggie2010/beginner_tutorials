@@ -2,6 +2,7 @@
  * @file    listener.cpp
  * @brief   Node listener subscribes to chatter topic 
  * @author  Vontrelle Collins
+ * @copyright 2017 Vontrelle Collins
  */
 
 #include "ros/ros.h"
@@ -14,7 +15,7 @@ void chatterCallback(const std_msgs::String::ConstPtr &msg) {
 	/**
 	 *Calls this function every time a message is recieved on the chatter topic
 	 */
-	ROS_INFO("I heard: [%s]", msg->data.c_str());
+  ROS_INFO("I heard: [%s]", msg->data.c_str());
 }
 
 int main(int argc, char **argv) {
@@ -28,14 +29,14 @@ int main(int argc, char **argv) {
      * You must call one of the versions of ros::init() before using any other
      * part of the ROS system.
      */
-	ros::init(argc, argv, "listener");
+  ros::init(argc, argv, "listener");
 
 	/**
      * NodeHandle is the main access point to communications with the ROS system.
      * The first NodeHandle constructed will fully initialize this node, and the last
      * NodeHandle destructed will close down the node.
      */
-	ros::NodeHandle n;
+  ros::NodeHandle n;
 
 	/**
      * The subscribe() call is how you tell ROS that you want to receive messages
@@ -52,14 +53,14 @@ int main(int argc, char **argv) {
      * is the number of messages that will be buffered up before beginning to throw
      * away the oldest ones.
      */
-	ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
+  ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
 
 	/**
      * ros::spin() will enter a loop, pumping callbacks.  With this version, all
      * callbacks will be called from within this thread (the main one).  ros::spin()
      * will exit when Ctrl-C is pressed, or the node is shutdown by the master.
      */
-	ros::spin();
+  ros::spin();
 
-	return 0;
+  return 0;
 }
