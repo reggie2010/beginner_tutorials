@@ -5,6 +5,7 @@
     name="talker"
     type="talker"
     args="1"
+    launch-prefix="xterm -e"
   />
 
   <node
