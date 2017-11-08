@@ -6,8 +6,10 @@
  */
 
 #include <sstream>
+#include <cstdlib>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/changeFrequency.h"
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -50,11 +52,30 @@ int main(int argc, char **argv) {
      * buffer up before throwing some away.
      */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+  ros::ServiceClient client;
+  client = n.serviceClient<beginner_tutorials::changeFrequency>("change_frequency");
+  int f;
+
+  if (argc != 2) {
+    ROS_WARN("usage: talker Freq");
+    return 1;
+  }
+
+  
+  beginner_tutorials::changeFrequency srv;
+  srv.request.frequencyIn = atoll(argv[1]);   
+  ROS_INFO("frequency set to: %ld", (long int)srv.request.frequencyIn);
+
+  if (srv.request.frequencyIn < 0) {
+    ROS_ERROR("Frequency should be more than one");
+  }
+  f = srv.request.frequencyIn;
+  ROS_DEBUG("Frequency: %d", f);
 
   /**
    * Frequency at which this node publishes messages
    */
-  ros::Rate loop_rate(0.5);
+  ros::Rate loop_rate(f);
 
     /**
      * A count of how many messages we have sent. This is used to create
