@@ -1,5 +1,16 @@
 # ROS - Beginner Tutorial
 
+## Overview
+```
+ROS (Robotics Operating System) is a open source platform that allows using to
+build robotics software aplications. This is a short tutorial covering the fellowing
+
+--Publishers/Subscriber Nodes
+--Server/Client Nodes
+--ROS logging
+--ROS launch files
+```
+
 ## Dependencies
 ```
 ROS Version: Kinetic
