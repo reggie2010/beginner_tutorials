@@ -52,15 +52,23 @@ int main(int argc, char **argv) {
      * buffer up before throwing some away.
      */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+
+  /**
+   * Defines a client and calls the serivce change_frequency
+   */
   ros::ServiceClient c;
   c = n.serviceClient<beginner_tutorials::changeFrequency>("change_frequency");
+
+  // defines the frequency rate ofthis node
   int f;
 
+  // Checks that this node is called with 2 arguments
   if (argc != 2) {
     ROS_WARN("usage: talker Freq");
     return 1;
   }
 
+  // Defines the changeFrequency service class
   beginner_tutorials::changeFrequency srv;
   srv.request.frequencyIn = atoll(argv[1]);
   ROS_INFO("frequency set to: %ld", (long int)srv.request.frequencyIn);
@@ -68,6 +76,8 @@ int main(int argc, char **argv) {
   if (srv.request.frequencyIn < 0) {
     ROS_ERROR("Frequency should be more than one");
   }
+
+  // Sets the node frequency rate
   f = srv.request.frequencyIn;
   ROS_DEBUG("Frequency: %d", f);
 
