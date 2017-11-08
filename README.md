@@ -5,20 +5,25 @@
 ROS Version: Kinetic
 ```
 
-## Adding Package
+## CreatingCatkin Workspace
 ```
 Create catkin workspace
 $ mkdir -p ~/catkin_workspce/src
 $ cd ~/catkin_workspace
 $ catkin_make
 
-Add the beginner_tutorial package to your catkin workspace src folder
+---Source your catkin workspace---
+$ source devel/setup.bash
+```
+
+
+## Add the beginner_tutorial package to your catkin workspace
+```
 $ cd ~/catkin_workspace/src
 $ git clone --recursive https://github.com/reggie2010/beginner_tutorials
 
-Source your catkin workspace
-$ cd ~/catkin_workspace
-$ . ~/catkin_ws/devel/setup.bash
+$ cd ..
+$ catkin_make
 ```
 
 ## Run Nodes
@@ -27,8 +32,15 @@ In seperate terminals
 $ roscore //starts master node
 
 $ . ~/catkin_ws/devel/setup.bash
-$ rosrun begineer_tutorials talker.cpp
+$ rosrun begineer_tutorials talker 10 //Needs argument to set rate of node
 
 $ . ~/catkin_ws/devel/setup.bash
-$ rosrun begineer_tutorials listener.cpp
+$ rosrun begineer_tutorials listener
+```
+
+## Run Using Launch File
+```
+---In new terminal window---
+$ . ~/catkin_workspace/devel/setup.bash
+$ roslaunch beginner_tutorials start.launch
 ```
