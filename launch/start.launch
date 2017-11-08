@@ -1,0 +1,20 @@
+<launch>
+
+  <node
+    pkg="beginner_tutorials"
+    name="talker"
+    type="talker"
+    args="1"
+  />
+
+  <node
+    pkg="beginner_tutorials"
+    name="listener"
+    type="listener"
+    launch-prefix="xterm -e"
+  />
+
+</launch>
+
+
+
