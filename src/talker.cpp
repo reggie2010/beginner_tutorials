@@ -52,8 +52,8 @@ int main(int argc, char **argv) {
      * buffer up before throwing some away.
      */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-  ros::ServiceClient client;
-  client = n.serviceClient<beginner_tutorials::changeFrequency>("change_frequency");
+  ros::ServiceClient c;
+  c = n.serviceClient<beginner_tutorials::changeFrequency>("change_frequency");
   int f;
 
   if (argc != 2) {
@@ -61,9 +61,8 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  
   beginner_tutorials::changeFrequency srv;
-  srv.request.frequencyIn = atoll(argv[1]);   
+  srv.request.frequencyIn = atoll(argv[1]);
   ROS_INFO("frequency set to: %ld", (long int)srv.request.frequencyIn);
 
   if (srv.request.frequencyIn < 0) {

@@ -1,0 +1,7 @@
+src/talker.cpp:66:  Use int16/int64/etc, rather than the C type long  [runtime/int] [4]
+Done processing src/talker.cpp
+Done processing src/listener.cpp
+src/changeFrequencyServer.cpp:11:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeFrequency::Request &req  [runtime/references] [2]
+src/changeFrequencyServer.cpp:12:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeFrequency::Response &res  [runtime/references] [2]
+Done processing src/changeFrequencyServer.cpp
+Total errors found: 3

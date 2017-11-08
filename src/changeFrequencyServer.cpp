@@ -1,3 +1,10 @@
+/**
+ * @file    changeFrequencyServer.cpp
+ * @brief   Provides service to change node rate 
+ * @author  Vontrelle Collins
+ * @copyright 2017 Vontrelle Collins
+ */
+
 #include "ros/ros.h"
 #include "beginner_tutorials/changeFrequency.h"
 
