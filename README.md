@@ -1,4 +1,5 @@
 # ROS - Beginner Tutorial
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
 ## Overview
 ```
@@ -13,10 +14,10 @@ build robotics software aplications. This is a short tutorial covering the fello
 
 ## Dependencies
 ```
-ROS Version: Kinetic
+ROS Version: [Kinetic](http://wiki.ros.org/kinetic/Installation "Kinetic Install Link")
 ```
 
-## CreatingCatkin Workspace
+## Creating Catkin Workspace
 ```
 Create catkin workspace
 $ mkdir -p ~/catkin_workspce/src
