@@ -14,7 +14,7 @@ build robotics software aplications. This is a short tutorial covering the fello
 
 ## Dependencies
 ```
-ROS Version: [Kinetic](http://wiki.ros.org/kinetic/Installation "Kinetic Install Link")
+ROS Version: [Kinetic](http://wiki.ros.org/kinetic/Installation)
 ```
 
 ## Creating Catkin Workspace
