@@ -13,9 +13,11 @@ build robotics software aplications. This is a short tutorial covering the fello
 ```
 
 ## Dependencies
-```
-ROS Version: [Kinetic](http://wiki.ros.org/kinetic/Installation)
-```
+#### ROS Version
+[Kinetic](http://wiki.ros.org/kinetic/Installation "ROS Installation")
+
+#### Ubuntu 16.04.3 LTS
+[Ubuntu](https://www.ubuntu.com/download/desktop "Ubuntu Installation")
 
 ## Creating Catkin Workspace
 ```
