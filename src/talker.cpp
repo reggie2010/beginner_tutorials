@@ -10,6 +10,11 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/changeFrequency.h"
+#include <tf/transform_broadcaster.h>
+#include <turtlesim/Pose.h>
+
+// defines the frequency rate of node
+int nodeFrequency;
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -27,12 +32,32 @@ int main(int argc, char **argv) {
      */
   ros::init(argc, argv, "talker");
 
+  // Checks that this node is called with 2 arguments
+  if (argc != 2) {
+    ROS_WARN("usage: talker Freq turtle_name");
+    return 1;
+  }
+
+  nodeFrequency = atoll(argv[1]);
+
+  if (nodeFrequency < 0) {
+    ROS_ERROR("Frequency should be more than one");
+  }
+  
+  ROS_DEBUG("Frequency: %d", nodeFrequency);
+
+  ROS_INFO("frequency set to: %ld", (long int)nodeFrequency);
+
+
     /**
      * NodeHandle is the main access point to communications with the ROS system.
      * The first NodeHandle constructed will fully initialize this node, and the last
      * NodeHandle destructed will close down the node.
      */
   ros::NodeHandle n;
+
+  tf::TransformBroadcaster br;
+  tf::Transform transform;
 
     /**
      * The advertise() function is how you tell ROS that you want to
@@ -54,37 +79,9 @@ int main(int argc, char **argv) {
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
   /**
-   * Defines a client and calls the serivce change_frequency
-   */
-  ros::ServiceClient c;
-  c = n.serviceClient<beginner_tutorials::changeFrequency>("change_frequency");
-
-  // defines the frequency rate ofthis node
-  int f;
-
-  // Checks that this node is called with 2 arguments
-  if (argc != 2) {
-    ROS_WARN("usage: talker Freq");
-    return 1;
-  }
-
-  // Defines the changeFrequency service class
-  beginner_tutorials::changeFrequency srv;
-  srv.request.frequencyIn = atoll(argv[1]);
-  ROS_INFO("frequency set to: %ld", (long int)srv.request.frequencyIn);
-
-  if (srv.request.frequencyIn < 0) {
-    ROS_ERROR("Frequency should be more than one");
-  }
-
-  // Sets the node frequency rate
-  f = srv.request.frequencyIn;
-  ROS_DEBUG("Frequency: %d", f);
-
-  /**
    * Frequency at which this node publishes messages
    */
-  ros::Rate loop_rate(f);
+  ros::Rate loop_rate(nodeFrequency);
 
     /**
      * A count of how many messages we have sent. This is used to create
@@ -92,6 +89,11 @@ int main(int argc, char **argv) {
      */
   int count = 0;
   while (ros::ok()) {
+
+    transform.setOrigin( tf::Vector3(3.5, 1.5, 0.0) );
+    transform.setRotation( tf::Quaternion(0, 0, 0.7854, 1) );
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+
     std::stringstream ss;
     ss << "[" << count << "]: " << "Learning ROS is fun!!";
 
