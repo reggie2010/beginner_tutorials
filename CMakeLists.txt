@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  tf
+  turtlesim
 )
 
 ## System dependencies are found with CMake's conventions
@@ -133,6 +135,12 @@ add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 add_executable(changeFrequencyServer src/changeFrequencyServer.cpp)
 target_link_libraries(changeFrequencyServer ${catkin_LIBRARIES})
 add_dependencies(changeFrequencyServer beginner_tutorials_generate_messages_cpp)
+
+add_executable(talker_broadcaster src/talker_broadcaster.cpp)
+target_link_libraries(talker_broadcaster ${catkin_LIBRARIES})
+
+add_executable(turtle_tf_listener src/turtle_tf_listener.cpp)
+target_link_libraries(turtle_tf_listener ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
