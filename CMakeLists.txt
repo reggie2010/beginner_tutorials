@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(beginner_tutorials)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -219,3 +219,27 @@ target_link_libraries(turtle_tf_listener ${catkin_LIBRARIES})
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+
+  add_rostest_gtest(
+    test_talker
+    launch/test_beginner_tutorials.launch
+    test/main.cpp
+    test/test_talker.cpp
+  )
+
+  target_link_libraries(
+    test_talker
+    ${catkin_LIBRARIES}
+  )
+
+  add_dependencies(
+    test_talker
+    talker
+    ${PROJECT_NAME}_generate_messages_cpp
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    # ${catkin_EXPORTED_TARGETS}
+  )
+endif()
