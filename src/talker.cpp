@@ -11,11 +11,8 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/changeFrequency.h"
-#include <tf/transform_broadcaster.h>
-#include <turtlesim/Pose.h>
-
-// defines the frequency rate of node
-int nodeFrequency;
+#include "tf/transform_broadcaster.h"
+#include "turtlesim/Pose.h"
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -39,15 +36,18 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  nodeFrequency = atoll(argv[1]);
+  // defines the frequency rate of node
+  int nodeFrequency;
+
+  nodeFrequency = atoi(argv[1]);
 
   if (nodeFrequency < 0) {
     ROS_ERROR("Frequency should be more than one");
   }
-  
+
   ROS_DEBUG("Frequency: %d", nodeFrequency);
 
-  ROS_INFO("frequency set to: %ld", (long int)nodeFrequency);
+  ROS_INFO("frequency set to: %d", nodeFrequency);
 
 
     /**
@@ -93,10 +93,9 @@ int main(int argc, char **argv) {
      */
   int count = 0;
   while (ros::ok()) {
-
     // Creates frame named talk to makes its parent the world
-    transform.setOrigin( tf::Vector3(3.5, 1.5, 0.0) );
-    transform.setRotation( tf::Quaternion(0, 0, 0.7854, 1) );
+    transform.setOrigin(tf::Vector3(3.5, 1.5, 0.0));
+    transform.setRotation(tf::Quaternion(0, 0, 0.7854, 1));
     br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
     std::stringstream ss;

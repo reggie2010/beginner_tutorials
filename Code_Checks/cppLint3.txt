@@ -1,0 +1,13 @@
+./src/changeFrequencyServer.cpp:12:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeFrequency::Request &req  [runtime/references] [2]
+./src/changeFrequencyServer.cpp:13:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeFrequency::Response &res  [runtime/references] [2]
+Done processing ./src/changeFrequencyServer.cpp
+./src/talker_broadcaster.cpp:13:  Static/global string variables are not permitted.  [runtime/string] [4]
+./src/talker_broadcaster.cpp:22:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing ./src/talker_broadcaster.cpp
+./src/talker.cpp:99:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing ./src/talker.cpp
+Done processing ./src/listener.cpp
+Done processing ./src/turtle_tf_listener.cpp
+Done processing ./Test/main.cpp
+Done processing ./Test/nodeTest.cpp
+Total errors found: 5

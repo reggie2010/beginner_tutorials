@@ -10,9 +10,7 @@
 #include <ros/ros.h>
 
 TEST(TestRun, broadcastingTest) {
-
 }
 
 TEST(TestRun, frameTest) {
-  
 }
