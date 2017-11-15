@@ -40,6 +40,11 @@
     type="listener"
     launch-prefix="xterm -e" />
 
+  <node
+    pkg="rosbag"
+    name="rosbag_all"
+    type="record"
+    args="record --all --output-name=$(find beginner_tutorials)/branch_results/allTopics.bag" />
 
 </launch>
 
