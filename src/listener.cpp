@@ -3,6 +3,7 @@
  * @brief   Node listener subscribes to chatter topic 
  * @author  Vontrelle Collins
  * @copyright 2017 Vontrelle Collins
+ * @license MIT
  */
 
 #include "ros/ros.h"

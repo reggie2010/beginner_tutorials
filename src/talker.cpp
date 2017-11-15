@@ -3,6 +3,7 @@
  * @brief   Node talker publishes on chatter topic 
  * @author  Vontrelle Collins
  * @copyright 2017 Vontrelle Collins
+ * @license MIT
  */
 
 #include <sstream>
@@ -34,7 +35,7 @@ int main(int argc, char **argv) {
 
   // Checks that this node is called with 2 arguments
   if (argc != 2) {
-    ROS_WARN("usage: talker Freq turtle_name");
+    ROS_WARN("usage: talker Freq");
     return 1;
   }
 
@@ -56,7 +57,10 @@ int main(int argc, char **argv) {
      */
   ros::NodeHandle n;
 
+  // Creates boardcaster object
   tf::TransformBroadcaster br;
+
+  // Created transfrom obect. Object used to set orientations
   tf::Transform transform;
 
     /**
@@ -90,6 +94,7 @@ int main(int argc, char **argv) {
   int count = 0;
   while (ros::ok()) {
 
+    // Creates frame named talk to makes its parent the world
     transform.setOrigin( tf::Vector3(3.5, 1.5, 0.0) );
     transform.setRotation( tf::Quaternion(0, 0, 0.7854, 1) );
     br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));

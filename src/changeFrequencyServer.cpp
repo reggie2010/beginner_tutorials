@@ -3,6 +3,7 @@
  * @brief   Provides service to change node rate 
  * @author  Vontrelle Collins
  * @copyright 2017 Vontrelle Collins
+ * @license MIT
  */
 
 #include "ros/ros.h"
